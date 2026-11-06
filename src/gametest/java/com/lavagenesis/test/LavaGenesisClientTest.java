@@ -98,9 +98,11 @@ public class LavaGenesisClientTest implements FabricClientGameTest {
 			assertSynced(ctx, server, "after birth");
 			checkJournalGiven(ctx, server);
 
-			// 1. the ember in its chamber
-			camera(ctx, CameraType.FIRST_PERSON);
+			// 1. the ember in its chamber: blob stages start in third person on their own (form module)
+			boolean autoThird = ctx.computeOnClient((Minecraft mc) -> mc.options.getCameraType() == CameraType.THIRD_PERSON_BACK);
+			if (!autoThird) throw new AssertionError("an Ember should start in third person (FormClient.autoCamera)");
 			shot(ctx, "ember_chamber");
+			camera(ctx, CameraType.FIRST_PERSON);
 			camera(ctx, CameraType.THIRD_PERSON_BACK);
 			ctx.waitTicks(5);
 			shot(ctx, "ember_body");

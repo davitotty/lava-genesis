@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRenderEven
 import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityRenderLayerRegistrationCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.VanillaHudElements;
+import net.minecraft.client.CameraType;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -47,6 +48,7 @@ public final class FormClient {
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	public static void init() {
 		ClientTickEvents.END_CLIENT_TICK.register(FormClient::tick);
+		ClientTickEvents.END_CLIENT_TICK.register(FormClient::autoCamera);
 
 		LivingEntityRenderLayerRegistrationCallback.EVENT.register((type, renderer, helper, context) -> {
 			if (renderer instanceof AvatarRenderer<?>) {
@@ -60,6 +62,37 @@ public final class FormClient {
 
 		HudElementRegistry.attachElementAfter(VanillaHudElements.MISC_OVERLAYS, LavaGenesis.id("form_crust_overlay"),
 			FormClient::extractCrustOverlay);
+	}
+
+	// --- camera for tiny bodies ------------------------------------------------------------------------
+
+	/** Last body kind seen: null = no player yet, TRUE = blob stage, FALSE = full body. */
+	private static Boolean lastBlob;
+	/** Whether we switched the camera to third person ourselves (so we only switch back what we changed). */
+	private static boolean cameraSwitchedByUs;
+
+	/**
+	 * A 0.1-scale ember in first person sits with its eye a few hundredths of a block from the lava surface, so the
+	 * screen fills with one magnified lava texel. Blob stages therefore start in third person (where the glowing
+	 * blob is drawn); growing into a full body (Seamount) returns to first person. Pressing F5 still works any time;
+	 * this only acts when the body kind changes or the player first appears.
+	 */
+	private static void autoCamera(Minecraft mc) {
+		Player player = mc.player;
+		if (player == null) {
+			lastBlob = null;
+			return;
+		}
+		boolean blob = FormRules.isMolten(player) && FormRules.isBlob(FormRules.stage(player));
+		if (lastBlob != null && lastBlob == blob) return;
+		lastBlob = blob;
+		if (blob && mc.options.getCameraType().isFirstPerson()) {
+			mc.options.setCameraType(CameraType.THIRD_PERSON_BACK);
+			cameraSwitchedByUs = true;
+		} else if (!blob && cameraSwitchedByUs) {
+			if (mc.options.getCameraType() == CameraType.THIRD_PERSON_BACK) mc.options.setCameraType(CameraType.FIRST_PERSON);
+			cameraSwitchedByUs = false;
+		}
 	}
 
 	/** How far a lava body sees inside lava (blocks). */

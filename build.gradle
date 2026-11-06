@@ -1,0 +1,94 @@
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
+plugins {
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+
+base { archivesName = 'lavagenesis' }
+
+loom {
+	splitEnvironmentSourceSets()
+	mods {
+		"lavagenesis" {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+}
+
+fabricApi {
+	configureTests {
+		createSourceSet = true
+		modId = "lavagenesis-test"
+		enableGameTests = false
+		enableClientGameTests = true
+		eula = false
+	}
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+}
+
+// Translations: each module writes lang_parts/<module>.json (a flat JSON object).
+// This task merges them into en_us.json and fails when two parts define the same key.
+def langOut = layout.buildDirectory.dir('generated/lang')
+tasks.register('mergeLang') {
+	def partsDir = file('lang_parts')
+	def outFile = langOut.get().file('assets/lavagenesis/lang/en_us.json').asFile
+	inputs.dir(partsDir)
+	outputs.file(outFile)
+	doLast {
+		def merged = new TreeMap<String, Object>()
+		def from = [:]
+		(partsDir.listFiles() ?: []).findAll { it.name.endsWith('.json') }.sort { it.name }.each { f ->
+			new JsonSlurper().parse(f, 'UTF-8').each { k, v ->
+				if (merged.containsKey(k)) {
+					throw new GradleException("Translation key '${k}' is defined in both ${from[k]} and ${f.name}")
+				}
+				merged[k] = v
+				from[k] = f.name
+			}
+		}
+		outFile.parentFile.mkdirs()
+		outFile.setText(JsonOutput.prettyPrint(JsonOutput.toJson(merged)) + '\n', 'UTF-8')
+	}
+}
+sourceSets.main.resources.srcDir(langOut)
+tasks.matching { it.name == 'sourcesJar' }.configureEach { dependsOn 'mergeLang' }
+
+processResources {
+	dependsOn 'mergeLang'
+	def version = project.version
+	inputs.property "version", version
+	filesMatching("fabric.mod.json") { expand "version": version }
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 25
+	it.options.encoding = 'UTF-8'
+}
+
+java {
+	withSourcesJar()
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
+}
+
+loom.runs.configureEach {
+	// -Plavagenesis.shots=<dir>: where the client game test saves screenshots
+	if (project.hasProperty('lavagenesis.shots')) {
+		property 'lavagenesis.shots', project.property('lavagenesis.shots').toString()
+	}
+	// -Plavagenesis.makeworld=<dir>: the client game test also saves a play-test world there
+	if (project.hasProperty('lavagenesis.makeworld')) {
+		property 'lavagenesis.makeworld', project.property('lavagenesis.makeworld').toString()
+	}
+	// -Plavagenesis.world=<save name>: runClient opens straight into that world
+	if (it.name == 'client' && project.hasProperty('lavagenesis.world')) {
+		programArgs '--quickPlaySingleplayer', project.property('lavagenesis.world').toString()
+	}
+}

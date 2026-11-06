@@ -1,0 +1,21 @@
+{
+	"itemGroup.lavagenesis": "Lava Genesis",
+	"stage.lavagenesis.ember": "Ember",
+	"stage.lavagenesis.ember.desc": "A single spark of lava, newly born in the dark throat of an undersea volcano.",
+	"stage.lavagenesis.magma_droplet": "Magma Droplet",
+	"stage.lavagenesis.magma_droplet.desc": "A glowing bead of molten rock, hungry for more heat.",
+	"stage.lavagenesis.lava_flow": "Lava Flow",
+	"stage.lavagenesis.lava_flow.desc": "You move like a river of fire across the sea floor.",
+	"stage.lavagenesis.seamount": "Seamount",
+	"stage.lavagenesis.seamount.desc": "A mountain growing in the deep, still hidden beneath the waves.",
+	"stage.lavagenesis.islet": "Islet",
+	"stage.lavagenesis.islet.desc": "You have broken the surface: steam, black sand and your first island.",
+	"stage.lavagenesis.shield_island": "Shield Island",
+	"stage.lavagenesis.shield_island.desc": "Broad gentle slopes of basalt, built flow upon flow.",
+	"stage.lavagenesis.island_chain": "Island Chain",
+	"stage.lavagenesis.island_chain.desc": "The hotspot stays still while the islands march across the sea.",
+	"stage.lavagenesis.archipelago": "Archipelago",
+	"stage.lavagenesis.archipelago.desc": "A scattered kingdom of islands, green slopes and black beaches.",
+	"stage.lavagenesis.great_volcano": "Great Volcano",
+	"stage.lavagenesis.great_volcano.desc": "The largest mountain on the planet, measured from the sea floor. You."
+}

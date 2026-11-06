@@ -1,0 +1,21 @@
+{
+	"schemaVersion": 1,
+	"id": "lavagenesis",
+	"version": "${version}",
+	"name": "Lava Genesis",
+	"description": "You are born as a single spark of lava in an undersea volcano. Grow into a seamount, break the surface, raise a chain of islands and become a giant shield volcano.",
+	"authors": ["davit"],
+	"license": "MIT",
+	"icon": "assets/lavagenesis/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": ["com.lavagenesis.LavaGenesis"],
+		"client": ["com.lavagenesis.client.LavaGenesisClient"]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

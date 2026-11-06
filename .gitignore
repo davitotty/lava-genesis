@@ -4,3 +4,4 @@ run/
 out/
 *.iml
 .idea/
+tools/publish_state.json

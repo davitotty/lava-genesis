@@ -1,0 +1,40 @@
+{
+  "feature": "lavagenesis:land/olivine_ore",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 4
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR_WG"
+    },
+    {
+      "type": "minecraft:offset",
+      "x": {
+        "type": "minecraft:trapezoid",
+        "min": 0,
+        "max": 0,
+        "plateau": 0
+      },
+      "y": {
+        "type": "minecraft:trapezoid",
+        "min": -2,
+        "max": -1,
+        "plateau": 0
+      },
+      "z": {
+        "type": "minecraft:trapezoid",
+        "min": 0,
+        "max": 0,
+        "plateau": 0
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

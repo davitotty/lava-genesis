@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "lavagenesis:block/lush_volcanic_soil_top",
+    "side": "lavagenesis:block/lush_volcanic_soil_side",
+    "bottom": "lavagenesis:block/volcanic_soil"
+  }
+}

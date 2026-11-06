@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "lavagenesis:block/fresh_basalt"
+      },
+      {
+        "model": "lavagenesis:block/fresh_basalt",
+        "y": 90
+      },
+      {
+        "model": "lavagenesis:block/fresh_basalt",
+        "y": 180
+      },
+      {
+        "model": "lavagenesis:block/fresh_basalt",
+        "y": 270
+      }
+    ]
+  }
+}

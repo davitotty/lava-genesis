@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "condition": "minecraft:tool/can_silk_touch",
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "lavagenesis:black_sand_glass"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "lavagenesis:blocks/black_sand_glass"
+}

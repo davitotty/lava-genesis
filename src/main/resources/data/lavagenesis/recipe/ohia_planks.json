@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    "lavagenesis:ohia_log"
+  ],
+  "result": {
+    "id": "lavagenesis:ohia_planks",
+    "count": 4
+  }
+}

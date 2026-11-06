@@ -1,0 +1,61 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "lavagenesis:sulfur_crystal",
+              "condition": {
+                "type": "minecraft:match_block",
+                "blocks": "lavagenesis:sulfur_cluster",
+                "state": {
+                  "age": "2"
+                }
+              },
+              "modifier": [
+                {
+                  "type": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 2,
+                    "max": 3
+                  }
+                },
+                {
+                  "type": "minecraft:apply_bonus",
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:ore_drops"
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "lavagenesis:sulfur_crystal",
+              "condition": {
+                "type": "minecraft:match_block",
+                "blocks": "lavagenesis:sulfur_cluster",
+                "state": {
+                  "age": "1"
+                }
+              }
+            },
+            {
+              "type": "minecraft:item",
+              "name": "lavagenesis:sulfur_crystal",
+              "condition": {
+                "type": "minecraft:random_chance",
+                "chance": 0.5
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "random_sequence": "lavagenesis:blocks/sulfur_cluster"
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "lavagenesis:experience/islet",
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:shield"
+    },
+    "title": {
+      "translate": "advancements.lavagenesis.experience.shield_island.title"
+    },
+    "description": {
+      "translate": "advancements.lavagenesis.experience.shield_island.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "requirements": [
+    [
+      "granted"
+    ]
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "lavagenesis:cooling_lava",
+    "lavagenesis:molten_rock",
+    "lavagenesis:fresh_basalt",
+    "lavagenesis:pillow_lava",
+    "lavagenesis:glassy_basalt",
+    "lavagenesis:olivine_ore",
+    "lavagenesis:fumarole",
+    "lavagenesis:sulfur_cluster",
+    "lavagenesis:basalt_bricks"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "lavagenesis:experience/first_melt",
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:magma_block"
+    },
+    "title": {
+      "translate": "advancements.lavagenesis.experience.land_from_fire.title"
+    },
+    "description": {
+      "translate": "advancements.lavagenesis.experience.land_from_fire.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "requirements": [
+    [
+      "granted"
+    ]
+  ]
+}

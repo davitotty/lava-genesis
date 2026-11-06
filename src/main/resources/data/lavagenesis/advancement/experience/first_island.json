@@ -1,0 +1,28 @@
+{
+  "parent": "lavagenesis:experience/seamount",
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:oak_sapling"
+    },
+    "title": {
+      "translate": "advancements.lavagenesis.experience.first_island.title"
+    },
+    "description": {
+      "translate": "advancements.lavagenesis.experience.first_island.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "requirements": [
+    [
+      "granted"
+    ]
+  ]
+}

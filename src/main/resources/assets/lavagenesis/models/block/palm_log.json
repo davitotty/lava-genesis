@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "lavagenesis:block/palm_log_top",
+    "side": "lavagenesis:block/palm_log"
+  }
+}

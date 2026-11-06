@@ -1,0 +1,28 @@
+{
+  "parent": "lavagenesis:experience/seamount",
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:smooth_basalt"
+    },
+    "title": {
+      "translate": "advancements.lavagenesis.experience.islet.title"
+    },
+    "description": {
+      "translate": "advancements.lavagenesis.experience.islet.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "requirements": [
+    [
+      "granted"
+    ]
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "lavagenesis:magma_shard",
+              "condition": {
+                "type": "minecraft:all_of",
+                "terms": [
+                  {
+                    "type": "minecraft:match_block",
+                    "blocks": "lavagenesis:cooling_lava",
+                    "state": {
+                      "age": "0"
+                    }
+                  },
+                  {
+                    "type": "minecraft:random_chance",
+                    "chance": 0.25
+                  }
+                ]
+              }
+            },
+            {
+              "type": "minecraft:item",
+              "name": "lavagenesis:fresh_basalt",
+              "condition": {
+                "type": "minecraft:survives_explosion"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "random_sequence": "lavagenesis:blocks/cooling_lava"
+}

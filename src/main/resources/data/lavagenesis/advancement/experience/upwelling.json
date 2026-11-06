@@ -1,0 +1,28 @@
+{
+  "parent": "lavagenesis:experience/first_sip",
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:campfire"
+    },
+    "title": {
+      "translate": "advancements.lavagenesis.experience.upwelling.title"
+    },
+    "description": {
+      "translate": "advancements.lavagenesis.experience.upwelling.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "requirements": [
+    [
+      "granted"
+    ]
+  ]
+}

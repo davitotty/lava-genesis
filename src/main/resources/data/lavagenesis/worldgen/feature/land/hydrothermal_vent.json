@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:simple_block",
+  "to_place": {
+    "type": "minecraft:weighted",
+    "entries": [
+      {
+        "data": "lavagenesis:fumarole",
+        "weight": 3
+      },
+      {
+        "data": "lavagenesis:pillow_lava",
+        "weight": 5
+      },
+      {
+        "data": "lavagenesis:fresh_basalt",
+        "weight": 3
+      },
+      {
+        "data": "minecraft:magma_block",
+        "weight": 2
+      },
+      {
+        "data": "lavagenesis:molten_rock",
+        "weight": 1
+      },
+      {
+        "data": "lavagenesis:glassy_basalt",
+        "weight": 1
+      }
+    ]
+  }
+}

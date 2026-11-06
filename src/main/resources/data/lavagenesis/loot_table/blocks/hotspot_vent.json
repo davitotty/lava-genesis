@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "lavagenesis:hotspot_vent"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "lavagenesis:blocks/hotspot_vent"
+}

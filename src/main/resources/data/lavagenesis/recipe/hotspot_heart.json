@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "T": "lavagenesis:peles_tear",
+    "G": "lavagenesis:volcanic_glass",
+    "S": "lavagenesis:sulfur_crystal",
+    "O": "lavagenesis:olivine",
+    "M": "minecraft:magma_block"
+  },
+  "pattern": [
+    "TGT",
+    "SMS",
+    "OGO"
+  ],
+  "result": {
+    "id": "lavagenesis:hotspot_heart"
+  }
+}

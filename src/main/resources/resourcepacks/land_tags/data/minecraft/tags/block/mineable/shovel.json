@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "lavagenesis:black_sand",
+    "lavagenesis:volcanic_ash",
+    "lavagenesis:volcanic_soil",
+    "lavagenesis:lush_volcanic_soil"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "lavagenesis:experience/root",
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:amethyst_shard"
+    },
+    "title": {
+      "translate": "advancements.lavagenesis.experience.first_meal.title"
+    },
+    "description": {
+      "translate": "advancements.lavagenesis.experience.first_meal.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "requirements": [
+    [
+      "granted"
+    ]
+  ]
+}

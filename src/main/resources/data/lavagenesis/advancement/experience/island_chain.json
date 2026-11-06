@@ -1,0 +1,28 @@
+{
+  "parent": "lavagenesis:experience/shield_island",
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:iron_chain"
+    },
+    "title": {
+      "translate": "advancements.lavagenesis.experience.island_chain.title"
+    },
+    "description": {
+      "translate": "advancements.lavagenesis.experience.island_chain.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "requirements": [
+    [
+      "granted"
+    ]
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "lavagenesis:fresh_basalt",
+  "result": {
+    "id": "lavagenesis:basalt_bricks"
+  }
+}

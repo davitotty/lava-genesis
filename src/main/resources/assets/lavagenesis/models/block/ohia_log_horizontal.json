@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "lavagenesis:block/ohia_log_top",
+    "side": "lavagenesis:block/ohia_log"
+  }
+}

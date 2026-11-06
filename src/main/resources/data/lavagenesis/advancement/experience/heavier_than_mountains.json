@@ -1,0 +1,28 @@
+{
+  "parent": "lavagenesis:experience/great_volcano",
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:nether_star"
+    },
+    "title": {
+      "translate": "advancements.lavagenesis.experience.heavier_than_mountains.title"
+    },
+    "description": {
+      "translate": "advancements.lavagenesis.experience.heavier_than_mountains.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "requirements": [
+    [
+      "granted"
+    ]
+  ]
+}

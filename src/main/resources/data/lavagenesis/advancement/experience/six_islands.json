@@ -1,0 +1,28 @@
+{
+  "parent": "lavagenesis:experience/three_islands",
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:map"
+    },
+    "title": {
+      "translate": "advancements.lavagenesis.experience.six_islands.title"
+    },
+    "description": {
+      "translate": "advancements.lavagenesis.experience.six_islands.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "requirements": [
+    [
+      "granted"
+    ]
+  ]
+}

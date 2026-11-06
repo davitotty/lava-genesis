@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "lavagenesis:block/pillow_lava"
+      },
+      {
+        "model": "lavagenesis:block/pillow_lava",
+        "y": 90
+      },
+      {
+        "model": "lavagenesis:block/pillow_lava",
+        "y": 180
+      },
+      {
+        "model": "lavagenesis:block/pillow_lava",
+        "y": 270
+      }
+    ]
+  }
+}

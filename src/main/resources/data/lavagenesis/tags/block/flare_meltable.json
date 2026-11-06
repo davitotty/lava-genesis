@@ -1,0 +1,22 @@
+{
+  "values": [
+    "#minecraft:base_stone_overworld",
+    "#minecraft:base_stone_nether",
+    "#minecraft:sand",
+    "minecraft:cobblestone",
+    "minecraft:mossy_cobblestone",
+    "minecraft:cobbled_deepslate",
+    "minecraft:smooth_basalt",
+    "minecraft:polished_basalt",
+    "minecraft:gravel",
+    "minecraft:calcite",
+    "minecraft:dripstone_block",
+    "minecraft:obsidian",
+    "minecraft:sandstone",
+    "minecraft:red_sandstone",
+    "minecraft:clay",
+    "minecraft:end_stone",
+    { "id": "lavagenesis:fresh_basalt", "required": false },
+    { "id": "lavagenesis:black_sand", "required": false }
+  ]
+}

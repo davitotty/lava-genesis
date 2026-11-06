@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "lavagenesis:block/lush_volcanic_soil"
+      },
+      {
+        "model": "lavagenesis:block/lush_volcanic_soil",
+        "y": 90
+      },
+      {
+        "model": "lavagenesis:block/lush_volcanic_soil",
+        "y": 180
+      },
+      {
+        "model": "lavagenesis:block/lush_volcanic_soil",
+        "y": 270
+      }
+    ]
+  }
+}

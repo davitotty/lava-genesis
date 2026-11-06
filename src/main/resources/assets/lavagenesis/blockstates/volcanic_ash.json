@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "lavagenesis:block/volcanic_ash"
+      },
+      {
+        "model": "lavagenesis:block/volcanic_ash",
+        "y": 90
+      },
+      {
+        "model": "lavagenesis:block/volcanic_ash",
+        "y": 180
+      },
+      {
+        "model": "lavagenesis:block/volcanic_ash",
+        "y": 270
+      }
+    ]
+  }
+}

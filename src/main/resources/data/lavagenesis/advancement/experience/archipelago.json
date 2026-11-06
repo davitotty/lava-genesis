@@ -1,0 +1,28 @@
+{
+  "parent": "lavagenesis:experience/island_chain",
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:fern"
+    },
+    "title": {
+      "translate": "advancements.lavagenesis.experience.archipelago.title"
+    },
+    "description": {
+      "translate": "advancements.lavagenesis.experience.archipelago.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "requirements": [
+    [
+      "granted"
+    ]
+  ]
+}

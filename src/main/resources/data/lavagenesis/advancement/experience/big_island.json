@@ -1,0 +1,28 @@
+{
+  "parent": "lavagenesis:experience/first_island",
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:grass_block"
+    },
+    "title": {
+      "translate": "advancements.lavagenesis.experience.big_island.title"
+    },
+    "description": {
+      "translate": "advancements.lavagenesis.experience.big_island.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "requirements": [
+    [
+      "granted"
+    ]
+  ]
+}

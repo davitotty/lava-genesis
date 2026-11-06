@@ -1,0 +1,28 @@
+{
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:lava_bucket"
+    },
+    "title": {
+      "translate": "advancements.lavagenesis.experience.root.title"
+    },
+    "description": {
+      "translate": "advancements.lavagenesis.experience.root.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "lavagenesis:gui/advancements/backgrounds/experience_basalt"
+  },
+  "requirements": [
+    [
+      "granted"
+    ]
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "lavagenesis:experience/lava_flow",
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:basalt"
+    },
+    "title": {
+      "translate": "advancements.lavagenesis.experience.seamount.title"
+    },
+    "description": {
+      "translate": "advancements.lavagenesis.experience.seamount.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "requirements": [
+    [
+      "granted"
+    ]
+  ]
+}

@@ -1,0 +1,14 @@
+{
+	"schemaVersion": 1,
+	"id": "lavagenesis-test",
+	"version": "1.0.0",
+	"name": "Lava Genesis Tests",
+	"description": "Client game test for Lava Genesis: screenshots of every stage, HUD and journal checks, and the play-test world builder.",
+	"environment": "*",
+	"entrypoints": {
+		"fabric-client-gametest": ["com.lavagenesis.test.LavaGenesisClientTest"]
+	},
+	"depends": {
+		"lavagenesis": "*"
+	}
+}

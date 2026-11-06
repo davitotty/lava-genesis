@@ -103,7 +103,7 @@ summed from their vents (remember results of unloaded vents in a saved per-world
 | Seamount | **Pillow Mound** | heap a mound of pillow lava on the sea floor in front of you - raises the seamount |
 | Islet | **Eruption** | a fountain at the target: builds a cone of cooling lava, flings lava bombs, ash and steam |
 | Shield Island | **Shield Flow** | a wide, flat lava flow that spreads over shallow sea and fills it to just above sea level |
-| Island Chain | **Hotspot Leap** | arc 40-80 blocks over the ocean and erupt a seed island there with a new island vent |
+| Shield Island | **Hotspot Leap** | arc 40-80 blocks over the ocean and erupt a seed island there with a new island vent |
 | Archipelago | **Bomb Rain** | volcanic bombs over a wide area: many small patches of land, damage to mobs |
 | Great Volcano | **Great Eruption** | ash column, lightning in the ash cloud, a huge cone of new rock |
 

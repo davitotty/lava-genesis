@@ -1,0 +1,28 @@
+{
+  "parent": "lavagenesis:experience/lava_flow",
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:amethyst_cluster"
+    },
+    "title": {
+      "translate": "advancements.lavagenesis.experience.first_offering.title"
+    },
+    "description": {
+      "translate": "advancements.lavagenesis.experience.first_offering.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "requirements": [
+    [
+      "granted"
+    ]
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "lavagenesis:experience/archipelago",
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:respawn_anchor"
+    },
+    "title": {
+      "translate": "advancements.lavagenesis.experience.great_volcano.title"
+    },
+    "description": {
+      "translate": "advancements.lavagenesis.experience.great_volcano.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "requirements": [
+    [
+      "granted"
+    ]
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "lavagenesis:experience/big_island",
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:moss_block"
+    },
+    "title": {
+      "translate": "advancements.lavagenesis.experience.land_baron.title"
+    },
+    "description": {
+      "translate": "advancements.lavagenesis.experience.land_baron.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "requirements": [
+    [
+      "granted"
+    ]
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "lavagenesis:molten_rock",
+              "condition": "minecraft:tool/can_silk_touch"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "lavagenesis:magma_shard",
+              "condition": {
+                "type": "minecraft:table_bonus",
+                "enchantment": "minecraft:fortune",
+                "chances": [
+                  0.35,
+                  0.5,
+                  0.65,
+                  0.8
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "random_sequence": "lavagenesis:blocks/molten_rock"
+}

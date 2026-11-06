@@ -1,0 +1,28 @@
+{
+  "parent": "lavagenesis:experience/magma_droplet",
+  "criteria": {
+    "granted": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "minecraft:blaze_powder"
+    },
+    "title": {
+      "translate": "advancements.lavagenesis.experience.lava_flow.title"
+    },
+    "description": {
+      "translate": "advancements.lavagenesis.experience.lava_flow.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "requirements": [
+    [
+      "granted"
+    ]
+  ]
+}

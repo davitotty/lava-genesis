@@ -92,6 +92,11 @@ loom.runs.configureEach {
 		property 'lavagenesis.makeworld', project.property('lavagenesis.makeworld').toString()
 	}
 	// -Plavagenesis.world=<save name>: runClient opens straight into that world
+	// Dev client always plays as Player0 (the name the game test uses), so progress and vent ownership in the
+	// play-test world carry over between launches instead of a fresh random PlayerNNN each time.
+	if (it.name == 'client') {
+		programArgs '--username', 'Player0'
+	}
 	if (it.name == 'client' && project.hasProperty('lavagenesis.world')) {
 		programArgs '--quickPlaySingleplayer', project.property('lavagenesis.world').toString()
 	}

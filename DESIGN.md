@@ -1,8 +1,6 @@
 # Lava Genesis - design and team contract
 
-Minecraft Java **26.3**, Fabric (Loader 0.19.5, Fabric API 0.162.0+26.3, Loom 1.18, JDK 25 at
-`C:\Program Files\Java\jdk-25.0.5.0.2`). Mod id `lavagenesis`, base package `com.lavagenesis`.
-Project root: `C:\Users\davit\Documents\Lava Genesis Mod`.
+Minecraft Java **26.3**, Fabric (Loader 0.19.5, Fabric API 0.162.0+26.3, Loom 1.18, JDK 25). Mod id `lavagenesis`, base package `com.lavagenesis`.
 
 ## The game
 
@@ -128,7 +126,7 @@ summed from their vents (remember results of unloaded vents in a saved per-world
 
 1. **Only references: the `fabric-26-3-modding` skill** (load it with the Skill tool first) and the real game jars. Its
    `references/*.md` are the API and data-format guides; `scripts/api.sh <fully.qualified.Class> [regex]` prints real
-   26.3 signatures (set `JAVAP="/c/Program Files/Java/jdk-25.0.5.0.2/bin/javap.exe"`, and for Fabric API classes
+   26.3 signatures (set `JAVAP` to a JDK 25 `javap`, and for Fabric API classes
    `FABRIC_JAR=<the jar under ~/.gradle/caches/modules-2/files-2.1/net.fabricmc.fabric-api/...>`), and
    `scripts/vanilla.sh` extracts vanilla data/asset files to copy their shape. **Do not read other mods**: not the
    other mod projects in `~/Documents` (ignore the skill's "worked examples" section), not mod sources online.

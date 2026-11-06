@@ -133,4 +133,16 @@ The mod is split into modules (see `DESIGN.md`): `core` (shared player state `Ma
 advancement, Great Volcano finale), `form` (the player's body, heat, passives), `eruption` (pressure and powers) and
 `experience` (HUD, celebrations, advancements, Lava Journal, icon, client game test).
 
-License: MIT.
+## Credits
+
+- Built on [Fabric Loader](https://fabricmc.net/) and [Fabric API](https://modrinth.com/mod/fabric-api), for
+  Minecraft Java 26.3.
+- **AI disclosure:** this mod was designed and written by AI. Claude Code (Anthropic, model Claude Opus 5.5) wrote
+  the design, the shared core and the integration, and five Claude Opus 5.5 agents wrote one module each (land,
+  vent, form, eruption, experience), directed and play-tested by davit. All textures, the icon and the models were
+  drawn by the project's own Python scripts (`tools/gen_<module>.py`); no generated images, no assets from other
+  mods. Sounds are vanilla Minecraft sounds.
+
+## License
+
+MIT - see [LICENSE](LICENSE).

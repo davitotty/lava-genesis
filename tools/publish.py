@@ -138,9 +138,9 @@ def curseforge(project_id):
     for name, _ in wanted:
         match = [v for v in versions if v["name"] == name]
         if name == "26.3":
-            # several "26.3" entries exist (Minecraft version types); prefer the one under a "Minecraft 26" type
+            # two "26.3" entries exist; the real one sits under the version type named "26.3"
             types = {t["id"]: t["name"] for t in request("GET", f"{api}/game/version-types", auth)}
-            match = [v for v in match if "Minecraft" in types.get(v["gameVersionTypeID"], "")] or match
+            match = [v for v in match if "26" in types.get(v["gameVersionTypeID"], "")] or match
         if not match:
             sys.exit(f"CurseForge has no game version named {name}")
         ids.append(match[0]["id"])

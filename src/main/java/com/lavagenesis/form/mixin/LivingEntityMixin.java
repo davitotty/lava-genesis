@@ -30,7 +30,9 @@ public abstract class LivingEntityMixin {
 	}
 
 	@Inject(method = "travelInLava", at = @At("HEAD"), cancellable = true)
-	private void lavagenesis$swimThroughLava(Vec3 input, double oldY, boolean falling, double gravity, CallbackInfo ci) {
+	// vanilla order is travelInLava(input, gravity, falling, oldY) - verified with javap (dload_2 feeds
+	// getFluidFallingAdjustedMovement, slot 5 feeds jumpOutOfFluid). Swapping them pinned lava bodies to the floor.
+	private void lavagenesis$swimThroughLava(Vec3 input, double gravity, boolean falling, double oldY, CallbackInfo ci) {
 		if (!((Object) this instanceof Player player) || !FormRules.isMolten(player)) return;
 		FormMovement.travelInLava(player, input, falling, gravity);
 		jumpOutOfFluid(oldY);

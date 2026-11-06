@@ -28,6 +28,20 @@ public final class FormMovement {
 		player.move(MoverType.SELF, player.getDeltaMovement());
 		Vec3 v = player.getDeltaMovement();
 		if (player.horizontalCollision && player.onClimbable()) v = new Vec3(v.x, 0.2, v.z);
+		// Climb out of a pool. A small lava body sinks to the bottom, and vanilla's jumpOutOfFluid only lifts over
+		// edges up to 0.6 blocks above the body - so an Ember was trapped in any pool whose rim stood above the
+		// lava. Pushing into a wall while in lava now creeps up it (lava climbing the side), and once the space
+		// over the rim is free (1.3 blocks up, a little forward) the body hops out onto it.
+		if (player.horizontalCollision && input.lengthSqr() > 1.0E-4) {
+			Vec3 look = player.getLookAngle();
+			Vec3 push = new Vec3(look.x, 0.0, look.z);
+			push = push.lengthSqr() < 1.0E-4 ? Vec3.ZERO : push.normalize().scale(0.3);
+			if (player.level().noCollision(player, player.getBoundingBox().move(push.x, 1.3, push.z))) {
+				if (v.y < 0.42) v = new Vec3(v.x + push.x * 0.25, 0.42, v.z + push.z * 0.25);
+			} else if (v.y < 0.25) {
+				v = new Vec3(v.x, 0.25, v.z);
+			}
+		}
 		v = v.multiply(drag, 0.8, drag);
 		if (player.isShiftKeyDown() && !player.onGround()) v = v.add(0.0, -0.03, 0.0);
 		player.setDeltaMovement(player.getFluidFallingAdjustedMovement(gravity, falling, v));

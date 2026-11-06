@@ -34,7 +34,10 @@ import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.BookViewScreen;
 import net.minecraft.client.gui.screens.worldselection.WorldCreationUiState;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -115,6 +118,9 @@ public class LavaGenesisClientTest implements FabricClientGameTest {
 			// 3. Flare on its key, if the eruption module made power keys
 			tryPowerKey(ctx, server, "ember");
 
+			// 3b. an Ember can climb out of a lava pool whose rim stands a block above the lava, and step up a ledge
+			lavaPoolClimb(ctx, server);
+
 			// 4. every stage
 			stages(ctx, server, born);
 
@@ -192,7 +198,7 @@ public class LavaGenesisClientTest implements FabricClientGameTest {
 		server.runOnServer(s -> MagmaCore.addMass(player(s), 25, "test"));
 		int after = server.computeOnServer(s -> MagmaCore.get(player(s)).mass());
 		check(after == before + 25, "MagmaCore.addMass(25) changed mass from " + before + " to " + after);
-		boolean synced = waitUntil(ctx, () -> ctx.computeOnClient(mc -> mc.player != null && MagmaCore.get(mc.player).mass() == after), SYNC_TIMEOUT);
+		boolean synced = waitUntil(ctx, () -> ctx.computeOnClient(mc -> mc.player != null && MagmaCore.get(mc.player).mass() >= after), SYNC_TIMEOUT);   // upwelling may add more meanwhile
 		check(synced, "client never saw mass " + after);
 		ctx.waitTicks(6);
 		shot(ctx, "hud_mass_gain");
@@ -421,6 +427,59 @@ public class LavaGenesisClientTest implements FabricClientGameTest {
 		Path dir = cwd;
 		while (dir != null && !Files.exists(dir.resolve("settings.gradle"))) dir = dir.getParent();
 		return (dir != null ? dir : cwd).resolve(p).normalize();
+	}
+
+	/**
+	 * Builds a test course high in the air: a 3x3 lava pool two blocks deep whose rim stands about a block above
+	 * the lava surface, then a 1-block ledge. Puts the Ember in the lava facing east and holds "forward".
+	 * It must end up on top of the ledge without pressing jump (the bug a player hit: stuck in the birth pool).
+	 */
+	private void lavaPoolClimb(ClientGameTestContext ctx, TestServerContext server) {
+		int[] base = server.computeOnServer(s -> {
+			ServerPlayer p = player(s);
+			ServerLevel level = (ServerLevel) p.level();
+			int cx = p.getBlockX(), cz = p.getBlockZ(), y = 230;
+			BlockState stone = Blocks.STONE.defaultBlockState();
+			for (int dx = -3; dx <= 9; dx++) {
+				for (int dz = -3; dz <= 3; dz++) {
+					boolean pool = Math.abs(dx) <= 1 && Math.abs(dz) <= 1;
+					for (int dy = -1; dy <= 6; dy++) {
+						BlockState st = Blocks.AIR.defaultBlockState();
+						if (dy == -1) st = stone;
+						else if (dy <= 1) st = pool ? Blocks.LAVA.defaultBlockState() : stone;
+						else if (dy == 2) st = pool ? Blocks.AIR.defaultBlockState() : stone;
+						else if (dy == 3) st = dx >= 4 ? stone : Blocks.AIR.defaultBlockState();
+						else if (dx == 9) st = stone;
+						level.setBlockAndUpdate(new BlockPos(cx + dx, y + dy, cz + dz), st);
+					}
+				}
+			}
+			p.setDeltaMovement(net.minecraft.world.phys.Vec3.ZERO);
+			p.teleportTo(level, cx + 0.5, y + 1.3, cz + 0.5, Set.of(), -90.0F, 10.0F, true);
+			return new int[] {cx, y, cz};
+		});
+		ctx.waitTicks(20);
+		KeyMapping forward = ctx.computeOnClient((Minecraft mc) -> mc.options.keyUp);
+		ctx.getInput().holdKeyFor(forward, 120);
+		ctx.waitTicks(10);
+		double[] pos = server.computeOnServer(s -> {
+			ServerPlayer p = player(s);
+			return new double[] {p.getX() - base[0], p.getY() - base[1], p.isInLava() ? 1 : 0};
+		});
+		LOG.info("lava pool climb: ended at dx={} dy={} inLava={}", pos[0], pos[1], pos[2] > 0);
+		shot(ctx, "ember_climbed_out");
+		check(pos[2] == 0 && pos[0] > 2.0, String.format(Locale.ROOT,
+			"Ember stayed in the lava pool (dx=%.2f dy=%.2f) - it cannot climb over a 1-block rim", pos[0], pos[1]));
+		check(pos[1] >= 3.95, String.format(Locale.ROOT,
+			"Ember got out of the pool but did not step up the 1-block ledge (dy=%.2f, wanted 4)", pos[1]));
+		// back to the chamber for the rest of the test
+		server.runOnServer(s -> {
+			ServerPlayer p = player(s);
+			MagmaCore.get(p).homeVent().ifPresent(v ->
+				p.teleportTo((ServerLevel) p.level(), v.pos().getX() + 0.5, v.pos().getY() + 1.2, v.pos().getZ() + 0.5,
+					Set.of(), p.getYRot(), 20.0F, true));
+		});
+		ctx.waitTicks(20);
 	}
 
 	private static ServerPlayer player(MinecraftServer s) {

@@ -79,6 +79,10 @@ java {
 }
 
 loom.runs.configureEach {
+	// -Plavagenesis.debugMove=true: log lava-body movement (form module)
+	if (project.hasProperty('lavagenesis.debugMove')) {
+		property 'lavagenesis.debugMove', project.property('lavagenesis.debugMove').toString()
+	}
 	// -Plavagenesis.shots=<dir>: where the client game test saves screenshots
 	if (project.hasProperty('lavagenesis.shots')) {
 		property 'lavagenesis.shots', project.property('lavagenesis.shots').toString()
